@@ -156,23 +156,10 @@ interface State {
 
 // la extension ed reduxdevtools tambien se puede usar con zustand
 // como creariamos un middleware
-const logger = (config) => (set, get, api) => {
-    // set,
-    // get,
-    // api
-    return config(
-        (...args) => {
-            console.log("applyng",args);
-            set(...args)
-            console.log("new state, get()");            
-        },
-    get,
-    api
-    )
-} 
+
 
 // añadiendo el middleware
-export const useQuestionsStore = create<State>()(logger(persist((set, get) => {
+export const useQuestionsStore = create<State>()(persist((set, get) => {
     return {
         questions: [],
         currentQuestion: 0,
@@ -234,4 +221,4 @@ export const useQuestionsStore = create<State>()(logger(persist((set, get) => {
     }
 }, {
     name:'questions'
-})))
+}))
